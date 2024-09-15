@@ -60,7 +60,11 @@ func main() {
 	if !ok {
 		fmt.Println("Invalide name!")
 	} else {
-		fmt.Printf("The age is %v", age)
+		fmt.Printf("The age is %v \n", age)
+	}
+
+	for name, age := range myMap2 {
+		fmt.Printf("Name: %v Age: %v \n", name, age) // Order is not preserved
 	}
 
 }
