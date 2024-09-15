@@ -1,32 +1,66 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"slices"
 )
 
-func main() {
-	// const somt string = "Hello World"
-	// printme(somt)
-	var division, remainder, err = divisor(12, 0)
-	if err != nil {
-		fmt.Print(err.Error())
-	} else if remainder == 0 {
-		fmt.Printf("The division of integer i s %v", division)
-	} else {
-		fmt.Printf("The result of the division is %v and the remainder is %v", division, remainder)
-	}
-}
-
-// func printme(input_str string) {
-// 	fmt.Print(input_str)
+// func main() {
+// 	// const somt string = "Hello World"
+// 	// printme(somt)
+// 	var division, remainder, err = divisor(12, 0)
+// 	if err != nil {
+// 		fmt.Print(err.Error())
+// 	} else if remainder == 0 {
+// 		fmt.Printf("The division of integer i s %v", division)
+// 	} else {
+// 		fmt.Printf("The result of the division is %v and the remainder is %v", division, remainder)
+// 	}
 // }
 
-func divisor(numerator int, denominator int) (int, int, error) {
-	var err error
-	if denominator == 0 {
-		err = errors.New("cannot divide by zero")
-		return 0, 0, err
+// // func printme(input_str string) {
+// // 	fmt.Print(input_str)
+// // }
+
+// func divisor(numerator int, denominator int) (int, int, error) {
+// 	var err error
+// 	if denominator == 0 {
+// 		err = errors.New("cannot divide by zero")
+// 		return 0, 0, err
+// 	}
+// 	return numerator / denominator, numerator % denominator, err
+// }
+
+func main() {
+	// 1. Array
+	//  a)Fixed length b)Same type c)Indexable d) contiguous in memory
+	// var intArr [3]int32 = [3]int32{1, 2, 3}
+	// intArr := [3]int32{1, 2, 4}
+	intArr := [...]int32{1, 2, 3}
+	fmt.Println(intArr)
+
+	// 2. Slices
+	// Slices are the vectors of golang
+	intSlice := []int32{6, 7, 8}
+	fmt.Println(intSlice)
+	var intSlice2 []int32 = []int32{4, 5, 6}
+	//can also use make function
+	// var intSlice []int32 = make([]int32,3,10) //(datatype,length,capacity)
+	intSlice = append(intSlice, intSlice2...)
+	fmt.Println(intSlice)
+	slices.Sort(intSlice)
+	fmt.Println(intSlice)
+
+	// 3. Maps
+	// {'key':'value'}
+	var myMap map[string]int32 = make(map[string]int32, 2)
+	myMap2 := map[string]int32{"John": 32, "Atharv": 21, "Ayush": 18}
+	fmt.Println(myMap, myMap2)
+	var age, ok = myMap2["Atharv"]
+	if !ok {
+		fmt.Println("Invalide name!")
+	} else {
+		fmt.Printf("The age is %v", age)
 	}
-	return numerator / denominator, numerator % denominator, err
+
 }
