@@ -98,4 +98,24 @@ func main() {
 	}
 	var catStr2 = strBuilder.String()
 	fmt.Printf("\n%v", catStr2)
+
+	//5. Structs and Interfaces
+	//Defined as a data type with properties
+	// Is a class of a golang
+
+	type owner struct {
+		name string
+		age  int
+	}
+
+	type gasEngine struct {
+		mpg     int
+		gallons int
+		owner
+	}
+	// func (e gasEngine) milesLeft() int{
+	// 	return e.gallons * e.mpg
+	// }
+	var myEngine gasEngine = gasEngine{25, 35, owner{"ALex", 5}}
+	fmt.Println(myEngine.mpg, myEngine.gallons, myEngine.name)
 }
