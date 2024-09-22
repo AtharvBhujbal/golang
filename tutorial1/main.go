@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"slices"
+	"strings"
 )
 
 // func main() {
@@ -67,4 +68,34 @@ func main() {
 		fmt.Printf("Name: %v Age: %v \n", name, age) // Order is not preserved
 	}
 
+	//4. Strings and Runes
+	//Strings are non-mutable
+	//catStr[0] = 'a' cannot do this
+	//Strings while indexings are the underlying representation of UTF-8 encoding this creats a indexing problem
+	//It can be solved by Runes
+
+	// var myString = "resume"
+	var myString = []rune("resume")
+	var indexed = myString[1]
+	fmt.Printf("%v, %T\n", indexed, indexed)
+	for i, v := range myString {
+		fmt.Println(i, v)
+	}
+
+	//Inefficient way
+	// var strSlice = []string{"s", "u", "b", "s", "c", "r", "i", "b", "e"}
+	// var catStr string = ""
+	// for i := range strSlice {
+	// 	catStr += strSlice[i]
+	// }
+	// fmt.Printf("\n%v", catStr)
+
+	//efficient way
+	var strSlice2 = []string{"s", "u", "b", "s", "c", "r", "i", "b", "e"}
+	var strBuilder strings.Builder
+	for i := range strSlice2 {
+		strBuilder.WriteString(strSlice2[i])
+	}
+	var catStr2 = strBuilder.String()
+	fmt.Printf("\n%v", catStr2)
 }
