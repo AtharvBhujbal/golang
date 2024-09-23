@@ -100,8 +100,10 @@ func main() {
 	fmt.Printf("\n%v", catStr2)
 
 	//5. Structs and Interfaces
-	//Defined as a data type with properties
-	// Is a class of a golang
+	// Struct - Defined as a data type with properties
+	// Is a class of a golang.
+	// Interfaces are the way to generalize the input parameter to take multiple data types
+	// Is a method overloading in golang.
 
 	type owner struct {
 		name string
@@ -113,8 +115,30 @@ func main() {
 		gallons int
 		owner
 	}
+	type engine interface {
+		milesLeft() int
+	}
+
 	// func (e gasEngine) milesLeft() int{
 	// 	return e.gallons * e.mpg
+	// }
+
+	// func canMakeIt(e gasEngine, miles int){
+	// 	if miles<= e.milesLeft(){
+	// 		fmt.Println("You Can make it there!!")
+	// 	}else{
+	// 		fmt.Println("Need to refuel!")
+	// 	}
+	// }
+
+	// Above 'canMakeIt' method can be written as
+
+	// func canMakeIt(e engine, miles int){ // gasEngine -> engine //accepting a interface type i.e. a structure having a milesLeft() property is compatible
+	// 	if miles<= e.milesLeft(){
+	// 		fmt.Println("You Can make it there!!")
+	// 	}else{
+	// 		fmt.Println("Need to refuel!")
+	// 	}
 	// }
 	var myEngine gasEngine = gasEngine{25, 35, owner{"ALex", 5}}
 	fmt.Println(myEngine.mpg, myEngine.gallons, myEngine.name)
