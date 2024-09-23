@@ -142,4 +142,22 @@ func main() {
 	// }
 	var myEngine gasEngine = gasEngine{25, 35, owner{"ALex", 5}}
 	fmt.Println(myEngine.mpg, myEngine.gallons, myEngine.name)
+
+	//6. Pointers
+	// Special types
+	// Stores the value of memory location
+
+	var p *int32 = new(int32)
+	*p = 10     //Storing a value 10 at a location where the pointer is pointing to
+	var i int32 //Regular var
+	p = &i      //pointer is pointing to i
+	*p = 2      //val of i also changes
+
+	// Slices contain pointers to original data
+	// Changing the val of copy changes the val of original slices
+	var slice = []int32{1, 2, 3}
+	var sliceCopy = slice
+	sliceCopy[2] = 4
+	fmt.Println(slice) // Should be [1,2,3] but it is [1,2,4]
+	fmt.Println(sliceCopy)
 }
