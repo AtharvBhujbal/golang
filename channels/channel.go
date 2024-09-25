@@ -18,14 +18,14 @@ import "fmt"
 
 func main() {
 	var c = make(chan int)
-	go process(c)
-	for i := range c {
+	go process(c)      // asyn call passes the code execution to next line
+	for i := range c { // waits until the new val is set
 		fmt.Println(i)
 	}
 }
 
 func process(c chan int) {
-	defer close(c)
+	defer close(c) // tells a compiler to close the channel just before exiting a function
 	for i := 0; i < 5; i++ {
 		c <- i
 	}
