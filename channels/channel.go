@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // Channels
 // 1. Channels hold data, anything from range, int or slices
 // 2. Thread safe i.e. avoid data erases while reading and writing from databases
@@ -16,13 +14,13 @@ import "fmt"
 //	fmt.Println(i)
 // }
 
-func main() {
-	var c = make(chan int)
-	go process(c)      // asyn call passes the code execution to next line
-	for i := range c { // waits until the new val is set
-		fmt.Println(i)
-	}
-}
+// func main() {
+// 	var c = make(chan int)
+// 	go process(c)      // asyn call passes the code execution to next line
+// 	for i := range c { // waits until the new val is set
+// 		fmt.Println(i)
+// 	}
+// }
 
 func process(c chan int) {
 	defer close(c) // tells a compiler to close the channel just before exiting a function
